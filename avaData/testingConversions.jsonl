@@ -1,0 +1,47 @@
+[
+    {
+        "video": [
+            "videos/videos_data_2024_10_25_03_04_21_session_2_Town05_wk1_0_16.mp4"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<video>\nYou are guiding a blind person. The blind person needs to approach the goal: [x,y]=[-0.0, 1.71]. Generate the instruction for the last frame. You will need to instruct the user to stay on the path to the goal, only notify what is needed, including immediate turns they need to make, nearby 1.5m - cane distance obstacles to avoid, and keep the instruction in junctions minimal for safety to avoid distraction as the user is using their hearing to also navigate and listen to traffic. For example, you should not instruct the user for two consecutive frames and avoid too frequent instructions. \n\nAnswer in the json format.\nThre should be a key \"reason\" and a key \"instruction\" in the json.\n{\n    \"reason\": \"reason for the instruction from: \"remain_silent\", \"remain_silent_in_junction\", \"enter_junction\", \"exit_junction\", \"obstacle_in_front\", \"constant_instruction\", \"direction_change\", and \"stop\"\n    \"instruction\": \"instruction you provide to the blind navigator\"\n}\n"
+            },
+            {
+                "from": "gpt",
+                "value": "\ninstruction 15 seconds ago was: Okay, go straight. There's a fence and traffic sign on your left.\ninstruction 14 seconds ago was: None\ninstruction 13 seconds ago was: None\ninstruction 12 seconds ago was: None\ninstruction 11 seconds ago was: None\ninstruction 10 seconds ago was: None\ninstruction 9 seconds ago was: None\ninstruction 8 seconds ago was: None\ninstruction 7 seconds ago was: Okay, proceed forward. There's no obstacle.\ninstruction 6 seconds ago was: None\ninstruction 5 seconds ago was: None\ninstruction 4 seconds ago was: None\ninstruction 3 seconds ago was: None\ninstruction 2 seconds ago was: None\ninstruction 1 seconds ago was: None\n"
+            }
+        ]
+    },
+    {
+        "video": [
+            "videos/videos_data_2024_10_25_03_04_21_session_2_Town05_wk1_1_17.mp4"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<video>\nYou are guiding a blind person. The blind person needs to approach the goal: [x,y]=[-0.0, 1.71]. Generate the instruction for the last frame. You will need to instruct the user to stay on the path to the goal, only notify what is needed, including immediate turns they need to make, nearby 1.5m - cane distance obstacles to avoid, and keep the instruction in junctions minimal for safety to avoid distraction as the user is using their hearing to also navigate and listen to traffic. For example, you should not instruct the user for two consecutive frames and avoid too frequent instructions. \n\nAnswer in the json format.\nThre should be a key \"reason\" and a key \"instruction\" in the json.\n{\n    \"reason\": \"reason for the instruction from: \"remain_silent\", \"remain_silent_in_junction\", \"enter_junction\", \"exit_junction\", \"obstacle_in_front\", \"constant_instruction\", \"direction_change\", and \"stop\"\n    \"instruction\": \"instruction you provide to the blind navigator\"\n}\n"
+            },
+            {
+                "from": "gpt",
+                "value": "\ninstruction 15 seconds ago was: None\ninstruction 14 seconds ago was: None\ninstruction 13 seconds ago was: None\ninstruction 12 seconds ago was: None\ninstruction 11 seconds ago was: None\ninstruction 10 seconds ago was: None\ninstruction 9 seconds ago was: None\ninstruction 8 seconds ago was: Okay, proceed forward. There's no obstacle.\ninstruction 7 seconds ago was: None\ninstruction 6 seconds ago was: None\ninstruction 5 seconds ago was: None\ninstruction 4 seconds ago was: None\ninstruction 3 seconds ago was: None\ninstruction 2 seconds ago was: None\ninstruction 1 seconds ago was: Keep walking straight.\n"
+            }
+        ]
+    },
+    {
+        "video": [
+            "videos/videos_data_2024_10_25_03_04_21_session_2_Town05_wk1_2_18.mp4"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<video>\nYou are guiding a blind person. The blind person needs to approach the goal: [x,y]=[0.03, 1.53]. Generate the instruction for the last frame. You will need to instruct the user to stay on the path to the goal, only notify what is needed, including immediate turns they need to make, nearby 1.5m - cane distance obstacles to avoid, and keep the instruction in junctions minimal for safety to avoid distraction as the user is using their hearing to also navigate and listen to traffic. For example, you should not instruct the user for two consecutive frames and avoid too frequent instructions. \n\nAnswer in the json format.\nThre should be a key \"reason\" and a key \"instruction\" in the json.\n{\n    \"reason\": \"reason for the instruction from: \"remain_silent\", \"remain_silent_in_junction\", \"enter_junction\", \"exit_junction\", \"obstacle_in_front\", \"constant_instruction\", \"direction_change\", and \"stop\"\n    \"instruction\": \"instruction you provide to the blind navigator\"\n}\n"
+            },
+            {
+                "from": "gpt",
+                "value": "\ninstruction 15 seconds ago was: None\ninstruction 14 seconds ago was: None\ninstruction 13 seconds ago was: None\ninstruction 12 seconds ago was: None\ninstruction 11 seconds ago was: None\ninstruction 10 seconds ago was: None\ninstruction 9 seconds ago was: Okay, proceed forward. There's no obstacle.\ninstruction 8 seconds ago was: None\ninstruction 7 seconds ago was: None\ninstruction 6 seconds ago was: None\ninstruction 5 seconds ago was: None\ninstruction 4 seconds ago was: None\ninstruction 3 seconds ago was: None\ninstruction 2 seconds ago was: Keep walking straight.\ninstruction 1 seconds ago was: None\n"
+            }
+        ]
+    }
+]
