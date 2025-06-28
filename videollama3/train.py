@@ -36,7 +36,7 @@ import transformers
 from packaging import version
 from datasets import load_dataset, concatenate_datasets
 from torch.utils.data import Dataset
-from transformers.models.mixtral.modeling_mixtral import MixtralSparseMoeBlock
+#from transformers.models.mixtral.modeling_mixtral import MixtralSparseMoeBlock
 
 sys.path.append('./')
 
@@ -95,7 +95,7 @@ class ModelArguments:
     vision_encoder: Optional[str] = field(default=None)
     mm_vision_select_layer: Optional[int] = field(default=-1)
     mm_vision_select_feature: Optional[str] = field(default="patch")
-    mm_attn_implementation: Optional[str] = field(default="flash_attention_2")
+    mm_attn_implementation: Optional[str] = field(default="eager")
     # Token downsampling Arguments
     use_token_compression: Optional[bool] = field(default=False)
     use_flash_loss: Optional[bool] = field(default=False)
@@ -662,7 +662,7 @@ def train(attn_implementation=None):
 
     if data_args.use_batch_flattening:
         rank0_print('You are using flattening operation to flatten the entire mini batch into a single sequence')
-        assert model.config._attn_implementation == 'flash_attention_2'
+        assert model.config._attn_implementation == 'eager'
         assert version.parse(transformers.__version__) >= version.parse("4.44.0")
         data_module = make_flattening_supervised_data_module(vlprocessor=vlprocessor, data_args=data_args)
     else:
@@ -691,4 +691,4 @@ def train(attn_implementation=None):
 
 
 if __name__ == "__main__":
-    train(attn_implementation="flash_attention_2")
+    train(attn_implementation="eager")
