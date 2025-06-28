@@ -1,7 +1,5 @@
 #!/bin/bash
-# python -c "import torch; print(torch.__version__)"
-#  python -c "import torchvision; print(torchvision.__version__)"
-#   python -c "import torchaudio; print(torchaudio.__version__)"
+
 
 
 echo "starting training"
@@ -40,14 +38,14 @@ GRADIENT_ACCUMULATION_STEPS=$[$GLOBAL_BATCH_SIZE/($WORLD_SIZE*$NPROC_PER_NODE*$L
 echo $GRADIENT_ACCUMULATION_STEPS
 
 RUN_NAME="stage_1"
-DATA_DIR="/content/avaData"
+DATA_DIR="/content/moddedVL3/avaData"
 OUTPUT_DIR="../models"
 
 mkdir -p "$OUTPUT_DIR"
 
-DEEPSPEED_CONFIG="/content/VideoLLaMA3/scripts/zero1.json"
-TRAIN_SCRIPT="/content/VideoLLaMA3/videollama3/train.py"
-export PYTHONPATH="/content/VideoLLaMA3:$PYTHONPATH"
+DEEPSPEED_CONFIG="/content/moddedVL3/scripts/zero1.json"
+TRAIN_SCRIPT="/content/moddedVL3/videollama3/train.py"
+export PYTHONPATH="/content/moddedVL3:$PYTHONPATH"
 export FLASH_ATTENTION_FORCE_DISABLED=1
 export TRANSFORMERS_NO_FLASH_ATTN=1
 export DISABLE_FLASH_ATTN=1
