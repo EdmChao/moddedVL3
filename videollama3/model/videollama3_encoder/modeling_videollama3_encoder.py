@@ -33,12 +33,12 @@ from torch.nn.init import _calculate_fan_in_and_fan_out
 
 from transformers.activations import ACT2FN
 from transformers.modeling_utils import PreTrainedModel
-from transformers.utils import is_flash_attn_2_available
+# from transformers.utils import is_flash_attn_2_available
 
-if is_flash_attn_2_available():
-    from flash_attn import flash_attn_varlen_func
-else:
-    flash_attn_varlen_func = None
+# if is_flash_attn_2_available():
+#     from flash_attn import flash_attn_varlen_func
+# else:
+#     flash_attn_varlen_func = None
 
 try:
     from .configuration_videollama3_encoder import Videollama3VisionEncoderConfig
@@ -461,7 +461,7 @@ class Videollama3VisionEncoderModel(PreTrainedModel):
         "Videollama3VisionEncoderLayer",
         "Videollama3VisionEmbeddings",
     ]
-    _supports_flash_attn_2 = True
+    # _supports_flash_attn_2 = True
     _supports_sdpa = True
 
     def __init__(self, config: Videollama3VisionEncoderConfig):
