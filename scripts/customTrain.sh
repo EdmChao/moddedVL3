@@ -2,16 +2,12 @@
 # python -c "import torch; print(torch.__version__)"
 #  python -c "import torchvision; print(torchvision.__version__)"
 #   python -c "import torchaudio; print(torchaudio.__version__)"
-source /home/achao28/VideoLLaMA3/training/bin/activate
-exec > >(tee -a ../logs/train17.log) 2>&1
+
 
 echo "starting training"
 
 mkdir -p $HOME/lib
 ln -sf /usr/lib/x86_64-linux-gnu/libcuda.so.1 $HOME/lib/libcuda.so
-export LD_LIBRARY_PATH=$HOME/lib:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-export LIBRARY_PATH=$HOME/lib:$LIBRARY_PATH
-export LD_PRELOAD=$HOME/lib/libcuda.so
 echo $HOME
 echo $LD_LIBRARY_PATH
 
@@ -44,17 +40,19 @@ GRADIENT_ACCUMULATION_STEPS=$[$GLOBAL_BATCH_SIZE/($WORLD_SIZE*$NPROC_PER_NODE*$L
 echo $GRADIENT_ACCUMULATION_STEPS
 
 RUN_NAME="stage_1"
-DATA_DIR="/home/achao28/avaData"
+DATA_DIR="/content/avaData"
 OUTPUT_DIR="../models"
 
 mkdir -p "$OUTPUT_DIR"
 
-DEEPSPEED_CONFIG="zero1.json"
-TRAIN_SCRIPT="/home/achao28/VideoLLaMA3/videollama3/train.py"
-export PYTHONPATH="/home/achao28/VideoLLaMA3:$PYTHONPATH"
-
+DEEPSPEED_CONFIG="/content/VideoLLaMA3/scripts/zero1.json"
+TRAIN_SCRIPT="/content/VideoLLaMA3/videollama3/train.py"
+export PYTHONPATH="/content/VideoLLaMA3:$PYTHONPATH"
+export FLASH_ATTENTION_FORCE_DISABLED=1
+export TRANSFORMERS_NO_FLASH_ATTN=1
+export DISABLE_FLASH_ATTN=1
 # This command uses DeepSpeed for distributed training and LoRA for memory-efficient finetuning.
-deepspeed --launcher pytorch --master_port=29500 "$TRAIN_SCRIPT" \
+deepspeed --launcher pytorch --master_port=29500 --num_gpus=1 "$TRAIN_SCRIPT" \
     --deepspeed "$DEEPSPEED_CONFIG" \
     --model_type videollama3_qwen2 \
     --model_path Qwen/Qwen2.5-1.5B-Instruct \
@@ -69,7 +67,7 @@ deepspeed --launcher pytorch --master_port=29500 "$TRAIN_SCRIPT" \
     --model_max_length 2048 \
     --mm_max_length 10240 \
     --bf16 True \
-    --tf32 True \
+    --tf32 False \
     --fp16 False \
     --output_dir "$OUTPUT_DIR" \
     --num_train_epochs 1 \
