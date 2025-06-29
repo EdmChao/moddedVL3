@@ -16,10 +16,17 @@ whoami
 
 module load anaconda3
 
-source ../training/bin/activate # YOUR OWN VENV
+source /home/scratch/echao8/finetune/bin/activate # YOUR OWN VENV
 
 module load ffmpeg
 module load gcc/9.3.0
+
+module avail cuda
+module load cuda/11.7
+
+which nvcc
+echo$CUDA_HOME
+nvcc --version
 
 
 bash ../scripts/trainMultiple.sh

@@ -104,7 +104,8 @@ echo "Step 2: Starting fine-tuning..."
 # Use MPS for M3 Max if available, otherwise CUDA
 # export PYTORCH_ENABLE_MPS_FALLBACK=1
 
-python videollama3/train.py \
+export PYTHONPATH="/home/scratch/echao8/moddedVL3:$PYTHONPATH"
+python /home/scratch/echao8/moddedVL3/videollama3/train.py \
     --model_type videollama3_qwen2 \
     --model_path "$MODEL_PATH" \
     --vision_encoder "$VISION_ENCODER" \

@@ -11,6 +11,7 @@ dist
 *.jsonl
 log_dir*/
 temp*/
+.stdout
 
 # Data
 !**/alpaca-data-conversation.json
