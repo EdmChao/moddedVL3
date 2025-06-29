@@ -1,0 +1,25 @@
+#!/bin/bash  
+#SBATCH --mail-user=echao8@ucmerced.edu # REPLACE WITH YOUR EMAIL
+#SBATCH --mail-type=ALL  
+##SBATCH -p gpu
+##SBATCH -p cenvalarc.gpu
+##SBATCH -t 48:00:00
+#SBATCH -p test
+#SBATCH -t 1:00:00
+#SBATCH --ntasks-per-node=56
+#SBATCH --output=../logs/testFinetune%j.stdout 
+#SBATCH --job-name=testFinetune
+#SBATCH --export=ALL
+#SBATCH --gres=gpu:1
+
+whoami
+
+module load anaconda3
+
+source ../training/bin/activate # YOUR OWN VENV
+
+module load ffmpeg
+module load gcc/9.3.0
+
+
+bash ../scripts/trainMultiple.sh
