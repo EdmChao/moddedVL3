@@ -7,8 +7,8 @@
 ##SBATCH -p test
 ##SBATCH -t 1:00:00
 #SBATCH --ntasks-per-node=56
-#SBATCH --output=../logs/trainMultiple%j.stdout 
-#SBATCH --job-name=trainMultiple
+#SBATCH --output=../logs/testInferSingleEncProj1000im3eNL%j.stdout 
+#SBATCH --job-name=testInference
 #SBATCH --export=ALL
 #SBATCH --gres=gpu:1
 
@@ -24,9 +24,6 @@ module load gcc/9.3.0
 module avail cuda
 module load cuda/11.7
 
-which nvcc
-echo$CUDA_HOME
-nvcc --version
 
 
-bash ../scripts/trainMultiple.sh
+python ../scripts/modelRunFine.py

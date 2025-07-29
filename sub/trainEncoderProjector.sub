@@ -2,13 +2,13 @@
 #SBATCH --mail-user=echao8@ucmerced.edu # REPLACE WITH YOUR EMAIL
 #SBATCH --mail-type=ALL  
 ##SBATCH -p gpu
-#SBATCH -p cenvalarc.gpu
-#SBATCH -t 48:00:00
-##SBATCH -p test
-##SBATCH -t 1:00:00
+##SBATCH -p cenvalarc.gpu
+##SBATCH -t 48:00:00
+#SBATCH -p test
+#SBATCH -t 1:00:00
 #SBATCH --ntasks-per-node=56
-#SBATCH --output=../logs/trainMultiple%j.stdout 
-#SBATCH --job-name=trainMultiple
+#SBATCH --output=../logs/trainEncoderProjector1000im_3e%j.stdout 
+#SBATCH --job-name=trainEncoderProjector
 #SBATCH --export=ALL
 #SBATCH --gres=gpu:1
 
@@ -29,4 +29,4 @@ echo$CUDA_HOME
 nvcc --version
 
 
-bash ../scripts/trainMultiple.sh
+bash ../scripts/trainEncoderProjector.sh
